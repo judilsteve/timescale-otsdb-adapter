@@ -23,7 +23,7 @@ public static class Settings
     }
 
     public static readonly string TimescaleConnectionString =
-        $"Host={GetEnv("TIMESCALE_HOST")};Port={GetEnv("TIMESCALE_PORT")};Username={GetEnv("TIMESCALE_USER")};Password={GetEnv("TIMESCALE_PASSWORD")};Database={GetEnv("TIMESCALE_DBNAME")};IncludeErrorDetail={isDebugBuild}";
+        $"Host={GetEnv("TIMESCALE_HOST")};Port={GetEnv("TIMESCALE_PORT", "5432")};Username={GetEnv("TIMESCALE_USER", "postgres")};Password={GetEnv("TIMESCALE_PASSWORD")};Database={GetEnv("TIMESCALE_DBNAME", "postgres")};IncludeErrorDetail={isDebugBuild}";
 
     public static readonly TimeSpan TagsetCacheUpdateInterval = GetEnv("TAGSET_CACHE_UPDATE_INTERVAL_SECONDS", s => TimeSpan.FromSeconds(double.Parse(s)), TimeSpan.FromSeconds(30));
     public static readonly TimeSpan TagsetCacheUpdateTimeout = GetEnv("TAGSET_CACHE_UPDATE_TIMEOUT_SECONDS", s => TimeSpan.FromSeconds(double.Parse(s)), TimeSpan.FromSeconds(10));
