@@ -35,6 +35,7 @@ public static class Settings
         null
     );
 
+    // How often to prune unused tagsets/metrics/tsuids
     public static readonly TimeSpan? HousekeepingInterval = GetEnv<TimeSpan?>(
         "HOUSEKEEPING_INTERVAL_SECONDS",
         s => TimeSpan.FromSeconds(double.Parse(s)),
@@ -42,4 +43,12 @@ public static class Settings
         DataRetentionPeriod.HasValue ? TimeSpan.FromHours(1) : null
     );
     public static readonly TimeSpan HousekeepingTimeout = GetEnv("HOUSEKEEPING_TIMEOUT_SECONDS", s => TimeSpan.FromSeconds(double.Parse(s)), TimeSpan.FromSeconds(120));
+
+    public static readonly int MetricCacheSize = GetEnv("METRIC_CACHE_SIZE", int.Parse, 65536);
+    public static readonly int TagsetCacheSize = GetEnv("TAGSET_CACHE_SIZE", int.Parse, 2097152);
+
+    // IMPORTANT: This must be significantly *less* than Timescale's data-point retention time,
+    // or else we might insert data-points with cached metric/tagset IDs that no longer exist in the DB!
+    public static readonly TimeSpan? CacheEntryTtl = DataRetentionPeriod.HasValue ? DataRetentionPeriod.Value / 2 : null;
+
 }

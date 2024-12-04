@@ -8,6 +8,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using TimescaleOpenTsdbAdapter;
 using CompressedStaticFiles;
+using Npgsql;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +27,8 @@ builder.Services.AddCompressedStaticFiles(options => {
 });
 
 builder.Services.AddDbContextFactory<MetricsContext>();
+
+builder.Services.AddSingleton(_ => NpgsqlDataSource.Create(Settings.TimescaleConnectionString));
 
 builder.Services.AddSingleton<TagsetCacheService>();
 builder.Services.AddHostedService(p => p.GetRequiredService<TagsetCacheService>());
