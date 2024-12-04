@@ -1,0 +1,7 @@
+/*******************************
+        User Overrides
+*******************************/
+
+.ui.search.dropdown > input.search {
+    color: @white;
+}

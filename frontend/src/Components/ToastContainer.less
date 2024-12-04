@@ -1,0 +1,23 @@
+#toastContainer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1001;
+
+    min-width: 20vw;
+
+    max-height: 100vh;
+    overflow-y: auto;
+
+    // Prevents a horizontal scrollbar from showing during dismiss animation
+    overflow-x: hidden;
+}
+
+.toast {
+    margin: 1em;
+}
+
+.toast>.message>.content {
+    // Prevent close button from colliding with title text
+    margin-right: 1em;
+}

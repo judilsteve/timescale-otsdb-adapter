@@ -1,0 +1,25 @@
+/*******************************
+    User Variable Overrides
+*******************************/
+
+@labelHoverColor: @white;
+@toggleLaneBackground: lighten(@black, 15);
+@toggleFocusColor: @toggleLaneBackground; // No focus colour, label can adjust to show focus
+
+@disabledCheckboxLabelColor: rgba(255, 255, 255, 0.6);
+
+@checkboxBackground: @black;
+@checkboxHoverBorderColor: lighten(@black, 25);
+
+@checkboxFocusBackground: @black;
+@checkboxFocusCheckColor: lighten(@black, 25);
+
+@checkboxActiveBackground: @black;
+@checkboxActiveCheckColor: lighten(@black, 25);
+@checkboxActiveBorderColor: lighten(@black, 25);
+@checkboxActiveHoverBorderColor: lighten(@black, 25);
+
+@checkboxActiveFocusBackground: @black;
+@checkboxActiveFocusCheckColor: lighten(@black, 25);
+
+@bulletColor: lighten(@black, 25);

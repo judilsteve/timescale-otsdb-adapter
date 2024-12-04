@@ -1,0 +1,7 @@
+/*******************************
+        Site Overrides
+*******************************/
+
+.card .ui.label {
+    background-color: lighten(@black, 15);
+}

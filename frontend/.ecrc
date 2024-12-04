@@ -1,0 +1,29 @@
+{
+    "Version": "v3.0.0",
+    "Verbose": false,
+    "Debug": false,
+    "IgnoreDefaults": true,
+    "SpacesAftertabs": false,
+    "NoColor": false,
+    "Exclude": [
+        "node_modules",
+        ".yarn",
+        "dist",
+        ".git",
+        "\\.svg$",
+        "yarn.lock",
+        ".pnp.cjs",
+        ".pnp.loader.mjs",
+        "fomantic-ui-less\\/(?!site)"
+    ],
+    "AllowedContentTypes": [],
+    "PassedFiles": [],
+    "Disable": {
+        "EndOfLine": false,
+        "Indentation": false,
+        "InsertFinalNewline": false,
+        "TrimTrailingWhitespace": false,
+        "IndentSize": false,
+        "MaxLineLength": false
+    }
+}

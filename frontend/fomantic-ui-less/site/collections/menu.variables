@@ -1,0 +1,21 @@
+/*******************************
+    User Variable Overrides
+*******************************/
+
+@hoverItemTextColor: @white;
+
+@background: @black;
+@verticalBackground: @black;
+@verticalItemBackground: @black;
+@headerBackground: @black;
+
+@verticalIconFloat: 'left';
+@verticalIconMargin: 0 0.5em 0 0;
+
+@dropdownBackground: @black;
+
+@subMenuTextColor: @mutedTextColor;
+
+// Poor naming of this variable on Semantic's part:
+// A dark theme requires overriding "dark" colour variables to make them comparatively light
+@darkTextColor: @white;

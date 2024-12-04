@@ -1,0 +1,20 @@
+/*******************************
+        Site Overrides
+*******************************/
+
+@media only screen and (max-width: @largestMobileScreen) {
+    .formButtons {
+        flex-grow: 1;
+        padding: 0 0.5em;
+        margin-bottom: 1em;
+    }
+
+    .formButtons .ui.buttons {
+        padding: 0;
+        margin: 0;
+    }
+
+    .formEndButtons {
+        justify-content: flex-end;
+    }
+}

@@ -1,0 +1,14 @@
+/*******************************
+    User Variable Overrides
+*******************************/
+
+@cornerIconShadow:
+    -@cornerIconStroke -@cornerIconStroke 0 @black,
+    @cornerIconStroke -@cornerIconStroke 0 @black,
+    -@cornerIconStroke @cornerIconStroke 0 @black,
+    @cornerIconStroke @cornerIconStroke 0 @black;
+@cornerIconInvertedShadow:
+    -@cornerIconStroke -@cornerIconStroke 0 @white,
+    @cornerIconStroke -@cornerIconStroke 0 @white,
+    -@cornerIconStroke @cornerIconStroke 0 @white,
+    @cornerIconStroke @cornerIconStroke 0 @white;

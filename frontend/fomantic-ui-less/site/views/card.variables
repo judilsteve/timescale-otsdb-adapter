@@ -1,0 +1,14 @@
+/*******************************
+    User Variable Overrides
+*******************************/
+
+@headerColor: @white;
+@metaColor: rgba(255, 255, 255, 0.4);
+@extraColor: rgba(255, 255, 255, 0.4);
+
+@extraDivider: 1px solid rgba(255, 255, 255, 0.05);
+
+@background: lighten(@black, 10);
+@linkHoverBackground: lighten(@black, 5);
+
+@descriptionColor: rgba(255, 255, 255, 0.68);
