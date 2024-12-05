@@ -25,9 +25,11 @@ public static class Settings
     public static readonly string TimescaleConnectionString =
         $"Host={GetEnv("TIMESCALE_HOST")};Port={GetEnv("TIMESCALE_PORT", "5432")};Username={GetEnv("TIMESCALE_USER", "postgres")};Password={GetEnv("TIMESCALE_PASSWORD")};Database={GetEnv("TIMESCALE_DBNAME", "postgres")};IncludeErrorDetail={isDebugBuild}";
 
+    // How often to update the tagset cache that is used to process queries
     public static readonly TimeSpan TagsetCacheUpdateInterval = GetEnv("TAGSET_CACHE_UPDATE_INTERVAL_SECONDS", s => TimeSpan.FromSeconds(double.Parse(s)), TimeSpan.FromSeconds(30));
     public static readonly TimeSpan TagsetCacheUpdateTimeout = GetEnv("TAGSET_CACHE_UPDATE_TIMEOUT_SECONDS", s => TimeSpan.FromSeconds(double.Parse(s)), TimeSpan.FromSeconds(10));
 
+    // Tagsets/metrics/tsids older than this with no data-points associated will be deleted by the housekeeping task.
     // This must match or exceed Timescale's configured retention policy, or old tagsets/metrics will become unqueryable!
     public static readonly TimeSpan? DataRetentionPeriod = GetEnv<TimeSpan?>(
         "DATA_RETENTION_DAYS",
@@ -36,6 +38,8 @@ public static class Settings
     );
 
     // How often to prune unused tagsets/metrics/tsuids
+    // Since Timescale drops data in complete hypertable chunks,
+    // this should be larger than or equal to the chunk size.
     public static readonly TimeSpan? HousekeepingInterval = GetEnv<TimeSpan?>(
         "HOUSEKEEPING_INTERVAL_SECONDS",
         s => TimeSpan.FromSeconds(double.Parse(s)),
@@ -44,8 +48,9 @@ public static class Settings
     );
     public static readonly TimeSpan HousekeepingTimeout = GetEnv("HOUSEKEEPING_TIMEOUT_SECONDS", s => TimeSpan.FromSeconds(double.Parse(s)), TimeSpan.FromSeconds(120));
 
-    public static readonly int MetricCacheSize = GetEnv("METRIC_CACHE_SIZE", int.Parse, 65536);
-    public static readonly int TagsetCacheSize = GetEnv("TAGSET_CACHE_SIZE", int.Parse, 2097152);
+    // Maximum size of caches used for looking up metric/tagset IDs when inserting data-points
+    public static readonly int MetricCacheSize = GetEnv("INSERT_METRIC_CACHE_SIZE", int.Parse, 65536);
+    public static readonly int TagsetCacheSize = GetEnv("INSERT_TAGSET_CACHE_SIZE", int.Parse, 2097152);
 
     // IMPORTANT: This must be significantly *less* than Timescale's data-point retention time,
     // or else we might insert data-points with cached metric/tagset IDs that no longer exist in the DB!

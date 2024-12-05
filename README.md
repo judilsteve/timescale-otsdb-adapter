@@ -6,10 +6,17 @@ Schema and JSON HTTP API query layer for TimescaleDB which (mostly) matches the 
 
 First, adjust [DDL.sql](./DDL.sql) to your liking. Pay specific attention to things like retention intervals, chunk sizes, column ordering in indices, etc. You should tune these to match your use case.
 
-Once you are happy with your schema, ensure you have a recent version of docker-compose (v2.31.0 has been tested to work). Then:
+There are also settings for the API which can be tuned via envvars. These are detailed in [./ReadApi/Settings.cs](./ReadApi/Settings.cs). Pay particular attention to matching `DATA_RETENTION_DAYS` to the retention interval that you have configured in Timescale itself.
 
-```bash
-TIMESCALE_PASSWORD=whatever_you_like docker-compose up -d
+```shell
+echo "TIMESCALE_PASSWORD=<whatever_you_like>" >> .env
+echo "DATA_RETENTION_DAYS=<match_ddl>" >> .env
+```
+
+Once you are happy with your schema and API settings, ensure you have a recent version of docker-compose (v2.31.0 has been tested to work). Then:
+
+```shell
+docker-compose up -d
 ```
 
 Timescale should now be available on port 5432, and the OTSDB-like API on port 8080.
@@ -30,9 +37,9 @@ TIMESCALE_PASSWORD=<your password here>
 TIMESCALE_DBNAME=<catalog name e.g. postgres>
 ```
 
-It is recommended to use VS Code (a launch.json is included) for running/debugging. However, you can also run with the dotnet CLI:
+A launch.json is provided for running/debugging with VS Code. However, you can also run with the dotnet CLI:
 
-```
+```shell
 dotnet build
 
 cd ReadApi
@@ -46,13 +53,13 @@ dotnet test
 
 The build is dockerised. To build locally:
 
-```
+```shell
 docker build --tag=read-api .
 ```
 
 and to run the image:
 
-```
+```shell
 docker run --rm --env-file .env read-api
 ```
 
