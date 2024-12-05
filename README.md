@@ -1,6 +1,6 @@
-# Metric Read API
+# Timescale-based OpenTSDB Drop-in Replacement
 
-Schema and JSON HTTP API query layer for TimescaleDB which (mostly) matches the data contract and behaviour of [OpenTSDB](http://opentsdb.net/docs/build/html/api_http/query/index.html).
+Schema and JSON HTTP API query layer for [TimescaleDB](https://github.com/timescale/timescaledb) which (mostly) matches the data contract and behaviour of [OpenTSDB](http://opentsdb.net/docs/build/html/api_http/query/index.html).
 
 # Why should I use this?
 
