@@ -12,7 +12,9 @@ Schema and JSON HTTP API query layer for [TimescaleDB](https://github.com/timesc
 
 ## Quick start
 
-First, adjust [DDL.sql](./DDL.sql) to your liking. Pay specific attention to things like retention intervals, chunk sizes, column ordering in indices, etc. You should tune these to match your use case.
+First, be sure to clone with `--recurse-submodules` (or run `git submodule update --init` if you already cloned without submodules).
+
+After cloning, adjust [DDL.sql](./DDL.sql) to your liking. Pay specific attention to things like retention intervals, chunk sizes, column ordering in indices, etc. You should tune these to match your use case.
 
 There are also settings for the API which can be tuned via envvars. These are detailed in [./ReadApi/Settings.cs](./ReadApi/Settings.cs). Pay particular attention to matching `DATA_RETENTION_DAYS` to the retention interval that you have configured in Timescale itself.
 

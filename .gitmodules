@@ -1,0 +1,4 @@
+[submodule "frontend/fomantic-ui-less"]
+	path = frontend/fomantic-ui-less
+	url = https://github.com/judilsteve/Fomantic-UI-LESS.git
+	branch = dark_theme
