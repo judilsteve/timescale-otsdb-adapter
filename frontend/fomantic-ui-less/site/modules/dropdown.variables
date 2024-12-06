@@ -1,9 +1,0 @@
-/*******************************
-    User Variable Overrides
-*******************************/
-
-@menuHeaderColor: @mutedTextColor;
-@menuBackground: @black;
-@selectedBackground: lighten(@black, 15);
-@hoveredItemBackground: lighten(@black, 25);
-@raisedShadow: 0 2px 3px 0 @black;
